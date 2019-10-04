@@ -1,0 +1,19 @@
+{
+	"name": "hue",
+	"version": "0.0.1",
+	"description": "A simple and easy-to-use front-end framework.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/h-a-n-a/Hue.git"
+	},
+	"author": "H-a-n-a",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/h-a-n-a/Hue/issues"
+	},
+	"homepage": "https://github.com/h-a-n-a/Hue#readme"
+}
