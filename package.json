@@ -1,7 +1,7 @@
 {
 	"name": "h",
 	"version": "0.0.1",
-	"description": "A front-end framework focusing on light-weight and easy-to-use.",
+	"description": "A front-end framework focused on light-weight and easy-to-use.",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
