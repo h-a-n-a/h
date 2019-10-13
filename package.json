@@ -8,12 +8,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/h-a-n-a/Hue.git"
+		"url": "git+https://github.com/h-a-n-a/h.git"
 	},
 	"author": "H-a-n-a",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/h-a-n-a/Hue/issues"
+		"url": "https://github.com/h-a-n-a/h/issues"
 	},
-	"homepage": "https://github.com/h-a-n-a/Hue#readme"
+	"homepage": "https://github.com/h-a-n-a/h#readme"
 }
