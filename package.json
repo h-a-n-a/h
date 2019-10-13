@@ -1,19 +1,23 @@
 {
-	"name": "h",
-	"version": "0.0.1",
-	"description": "A front-end framework focused on light-weight and easy-to-use.",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/h-a-n-a/h.git"
-	},
-	"author": "H-a-n-a",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/h-a-n-a/h/issues"
-	},
-	"homepage": "https://github.com/h-a-n-a/h#readme"
+  "name": "h",
+  "version": "0.0.1",
+  "description": "A front-end framework focused on light-weight and easy-to-use.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h-a-n-a/h.git"
+  },
+  "author": "H-a-n-a",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h-a-n-a/h/issues"
+  },
+  "homepage": "https://github.com/h-a-n-a/h#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0"
+  }
 }
