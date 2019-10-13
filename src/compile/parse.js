@@ -1,12 +1,14 @@
 import { isDef, isUndef, isTrue } from '../common/util'
-/**
- * Convert raw html to AST
- */
+
 const name = /[a-zA-Z_]+/
 const startTagRE = new RegExp(`^<(${name.source})\\s+`)
 const startTagCloseRE = /^\s*(\/?)>/
 const endTagRE = /([a-zA-Z_]+)>/
 const attrRE = /([^\s"'<>=]+)="([^"]*)"+/
+
+/**
+ * Convert raw html to AST
+ */
 export function parse (html) {
   const stack = []
   let root, currentParent
