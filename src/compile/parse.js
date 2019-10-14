@@ -33,7 +33,7 @@ export function parse (html) {
           children: []
         }
 
-        processHTags(element) // h-if, h-for
+        processHAttrs(element) // h-if, h-for
 
         if (isUndef(root)) root = element
         if (isDef(currentParent)) {
@@ -57,7 +57,7 @@ export function parse (html) {
 
   return root
 
-  function processHTags (elm) {
+  function processHAttrs (elm) {
     processFor(elm)
     processIf(elm)
   }
