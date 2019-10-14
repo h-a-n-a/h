@@ -1,10 +1,12 @@
 import { isDef, isUndef, isTrue } from '../common/util'
 
 const name = /[a-zA-Z_]+/
+const value = /[^\s"'<>=]+/
 const startTagRE = new RegExp(`^<(${name.source})\\s+`)
 const startTagCloseRE = /^\s*(\/?)>/
 const endTagRE = /([a-zA-Z_]+)>/
-const attrRE = /([^\s"'<>=]+)="([^"]*)"+/
+const attrRE = new RegExp(`^\\s*(${value.source})="([^"]*)"`)
+const forRE = new RegExp(`(${value.source})\\s+(?:in|of)\\s+(${value.source})`)
 
 /**
  * Convert raw html to AST
@@ -24,20 +26,22 @@ export function parse (html) {
       if (html.match(startTagRE)) {
         const start = parseStartTag()
         const element = {
+          type: 1,
           tag: start.tag,
           attrsMap: start.attrsMap,
-          unary: start.unary,
           parent: currentParent,
           children: []
         }
+
+        processHTags(element) // h-if, h-for
 
         if (isUndef(root)) root = element
         if (isDef(currentParent)) {
           currentParent.children.push(element)
         }
 
-        // unary elements are not allowed to be a parent
-        if (isUndef(element.unary)) {
+        // unary elements are not allowed to be parents
+        if (isFalse(start.isUnary)) {
           stack.push(element)
           currentParent = element
         }
@@ -52,6 +56,31 @@ export function parse (html) {
   }
 
   return root
+
+  function processHTags (elm) {
+    processFor(elm)
+    processIf(elm)
+  }
+
+  function processFor (elm) {
+    const map = elm.attrsMap
+    for (const el in map) {
+      if (el === 'h-for') {
+        const matched = map[el].match(forRE)
+        el.alias = matched[1]
+        el.for = matched[2]
+      }
+    }
+  }
+
+  function processIf (elm) {
+    const map = elm.attrsMap
+    for (const el in map) {
+      if (el === 'h-if') {
+        elm.ifExpression = map[el]
+      }
+    }
+  }
 
   function advance (n) {
     html = html.substring(n)
@@ -77,7 +106,7 @@ export function parse (html) {
     }
 
     if (end) {
-      start.unary = isTrue(end[1])
+      start.isUnary = isTrue(end[1])
       advance(end[0].length)
       return start
     }
