@@ -13,7 +13,7 @@ const forRE = new RegExp(
 const mustacheRE = /\{\{\s*(\w+)\s*\}\}/g
 
 /**
- * Convert raw HTML to AST
+ * Convert raw HTML to AST.
  */
 export function parse (html) {
   const stack = []
